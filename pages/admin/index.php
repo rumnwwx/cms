@@ -3,7 +3,6 @@ require_once __DIR__ . '/../../includes/functions.php';
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../includes/header.php';
 
-// Проверка прав доступа
 if (!isLoggedIn()) {
     redirect('/pages/login.php');
 }
@@ -40,3 +39,4 @@ $pageTitle = "Административная панель";
         </div>
     </div>
 
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

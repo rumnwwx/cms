@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '/../includes/functions.php';
-// Затем конфигурацию
 require_once __DIR__ . '/../config/config.php';
-// И только потом хедер
 require_once __DIR__ . '/../includes/header.php';
 
 $pageTitle = "Регистрация";
@@ -54,3 +52,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>

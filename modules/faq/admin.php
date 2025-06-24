@@ -6,12 +6,10 @@ $currentUser = getCurrentUser($pdo);
 $pageTitle = "Управление FAQ";
 $adminFAQ = new AdminFAQ($pdo);
 
-// Проверка прав доступа
 if (!isLoggedIn() || !$currentUser->isAdmin()) {
     redirect('/');
 }
 
-// Обработка действий
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         if (isset($_POST['add_topic'])) {
@@ -69,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Получение данных
 $pendingQuestions = $adminFAQ->getPendingQuestions();
 $topics = $adminFAQ->getTopics();
 ?>
@@ -164,3 +161,4 @@ $topics = $adminFAQ->getTopics();
         </div>
     </div>
 
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

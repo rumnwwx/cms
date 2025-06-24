@@ -9,7 +9,6 @@ class AdminFAQ {
     }
 
     public function addTopic($name) {
-        // Проверка на существование темы
         $stmt = $this->pdo->prepare("SELECT id FROM faq_topics WHERE name = ?");
         $stmt->execute([$name]);
         if ($stmt->fetch()) {
@@ -21,7 +20,6 @@ class AdminFAQ {
     }
 
     public function banUser($userId) {
-        // Проверяем существование пользователя
         $stmt = $this->pdo->prepare("SELECT id FROM users WHERE id = ?");
         $stmt->execute([$userId]);
 
@@ -48,10 +46,6 @@ class AdminFAQ {
         $stmt = $this->pdo->prepare("UPDATE users SET banned = 0 WHERE id = ?");
         return $stmt->execute([$userId]);
     }
-
-//    public function addAnswer($questionId, $answer) {
-//        return $this->faq->addAnswer($questionId, $answer);
-//    }
 
     public function rejectQuestion($questionId) {
         $stmt = $this->pdo->prepare("UPDATE faq_questions SET status = 'rejected', updated_at = NOW() WHERE id = ?");

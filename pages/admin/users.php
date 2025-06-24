@@ -6,12 +6,10 @@ require_once __DIR__ . '/../../includes/header.php';
 $currentUser = getCurrentUser($pdo);
 $pageTitle = "Управление пользователями";
 
-// Проверка прав доступа
 if (!isLoggedIn() || !$currentUser->isAdmin()) {
     redirect('/');
 }
 
-// Обработка действий
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $userId = intval($_POST['user_id'] ?? 0);
@@ -35,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Получение списка пользователей
 $stmt = $pdo->query("SELECT * FROM users ORDER BY created_at DESC");
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -82,3 +79,4 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </table>
     </div>
 
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>

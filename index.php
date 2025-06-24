@@ -3,9 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/includes/functions.php';
-// Затем конфигурацию
 require_once __DIR__ . '/config/config.php';
-// И только потом хедер
 require_once __DIR__ . '/includes/header.php';
 
 $pageTitle = "Главная страница";

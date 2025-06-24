@@ -6,10 +6,8 @@ $currentUser = getCurrentUser($pdo);
 $pageTitle = "Управление FAQ";
 $adminFAQ = new AdminFAQ($pdo);
 
-// Проверка прав доступа
 if (!isLoggedIn() || !$currentUser->isAdmin()) {
     redirect('/');
 }
 
-// Перенаправляем на модуль FAQ в админке
 redirect('/modules/faq/admin.php');

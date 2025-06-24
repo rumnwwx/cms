@@ -7,7 +7,6 @@ $pageTitle = "FAQ";
 $faq = new FAQ($pdo);
 $topics = $faq->getTopics();
 
-// Обработка отправки вопроса
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isLoggedIn() && !$currentUser->isBanned()) {
     $question = trim($_POST['question'] ?? '');
     $topicId = intval($_POST['topic_id'] ?? 0);
@@ -33,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isLoggedIn() && !$currentUser->isBa
     }
 }
 
-// Получаем выбранную тему (если есть)
 $selectedTopicId = isset($_GET['topic']) ? intval($_GET['topic']) : 0;
 $questions = $selectedTopicId > 0
     ? $faq->getQuestionsByTopic($selectedTopicId, true)
@@ -114,3 +112,4 @@ $questions = $selectedTopicId > 0
         </div>
     </div>
 
+<?php require_once __DIR__ . '/../../includes/footer.php'; ?>
